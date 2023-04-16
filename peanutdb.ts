@@ -1,10 +1,11 @@
 import { Tensor2D, data } from '@tensorflow/tfjs-node';
 
 import('@tensorflow/tfjs-node');
-import { UniversalSentenceEncoder } from '@tensorflow-models/universal-sentence-encoder';
+import use from '@tensorflow-models/universal-sentence-encoder';
 import { cosineSimilarity } from './utils.ts';
 
-const encoder = new UniversalSentenceEncoder();
+await use.loadQnA();
+const encoder = new use.UniversalSentenceEncoder();
 await encoder.load();
 
 // This list represents "the database".
