@@ -18,7 +18,7 @@ Then run the app:
 $ npm start
 ```
 
-You can modify `index.ts` with out own queries if you want and rerun it to get results.
+You can modify `index.ts` with your own queries if you want and rerun it to get results.
 
 ## So how's it work?
 
