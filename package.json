@@ -2,10 +2,10 @@
 	"name": "peanut-db",
 	"version": "1.0.0",
 	"description": "## Installation",
-	"main": "index.js",
+	"main": "index.ts",
 	"type": "module",
 	"scripts": {
-		"start": "ts-node-esm peanutdb.ts"
+		"start": "ts-node-esm index.ts"
 	},
 	"author": "Jon Ballands <jballands@gmail.com>",
 	"license": "MIT",
