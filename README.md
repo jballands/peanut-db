@@ -41,7 +41,7 @@ console.log(await recall("What's pumpkin"));
 
 _tl;dr, the TensorFlow [Universal Sentence Encoder](https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder) encodes sentences to vectors using a pretrained model, and the [cosine of the angle between of two-vectors](https://en.wikipedia.org/wiki/Cosine_similarity) determines how similar two vectors are._
 
-LLMs often use vectors for encoding data like words or sentences because they allow for predictable, semantically-rich way of representing the relationships between data. This is what allows LLMs to be particularly good at natural language processing, for example.
+LLMs often use vectors for encoding data (sometimes called _embedding_) like words or sentences because they allow for predictable, semantically-rich way of representing the relationships between data. This is what allows LLMs to be particularly good at natural language processing, for example.
 
 From math class, we're used to vectors being 2D vectors or 3D vectors, representing something like motion in a space. There are other kinds of vectors too: `[7, 10, -2, 6, 5]` is a 5D vector, for example.
 
