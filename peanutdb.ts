@@ -1,6 +1,6 @@
 import { Tensor2D, data } from '@tensorflow/tfjs-node';
 
-import('@tensorflow/tfjs-node');
+import tf from '@tensorflow/tfjs-node';
 import { UniversalSentenceEncoder } from '@tensorflow-models/universal-sentence-encoder';
 import { cosineSimilarity } from './utils.ts';
 
