@@ -10,3 +10,4 @@ await store('Poppy is a good girl.');
 
 console.log(await recall("Who's a good girl?"));
 console.log(await recall("What's pumpkin"));
+console.log(await recall('Is pumpkin a dog'));

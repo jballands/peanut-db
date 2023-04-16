@@ -37,6 +37,8 @@ console.log(await recall("Who's a good girl?"));
 // Output: Poppy is a good girl.
 console.log(await recall("What's pumpkin"));
 // Output: Pumpkin is a naughty girl.
+console.log(await recall('Is pumpkin a dog'));
+// Output: Pumpkin is a pretty cat.
 ```
 
 _tl;dr, the TensorFlow [Universal Sentence Encoder](https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder) encodes sentences to vectors using a pretrained model, and the [cosine of the angle between of two-vectors](https://en.wikipedia.org/wiki/Cosine_similarity) determines how similar two vectors are._
