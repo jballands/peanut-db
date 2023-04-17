@@ -2,7 +2,7 @@
 
 A tiny, simple Node.js application that demonstrates how vector databases like [Chroma](https://github.com/chroma-core/chroma) and [Pinecone](https://www.pinecone.io/) work at an _extremely_ high and simplified level. In particular, it demonstrates:
 
-- Using a sentence encoder to embedded sentences to 512-dimensional vectors
+- Using a sentence encoder to embed sentences to 512-dimensional vectors
 - Storing the vector into an array data structure
 - Recalling a sentence that's similar to ones stored in the array by finding the cosine of angle between two vectors
 
