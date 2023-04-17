@@ -1,8 +1,10 @@
 # peanut-db
 
-This is a simple Node.js application that demonstrates how vectors databases like [Chroma](https://github.com/chroma-core/chroma) and [Pinecone](https://www.pinecone.io/) work at an _extremely_ high-level.
+A tiny, simple Node.js application that demonstrates how vectors databases like [Chroma](https://github.com/chroma-core/chroma) and [Pinecone](https://www.pinecone.io/) work at an _extremely_ high-level. In particular, it demonstrates:
 
-Vector databases are really important to give large language models (LLMs) (like ChatGPT) "long-lived memory".
+- Using a sentence encoder to embedded sentences to 512-dimensional vectors
+- Storing the vector into an array data structure
+- Recalling a sentence that's similar to ones stored in the array by finding the cosine of angle between two vectors
 
 ## Installation
 
@@ -43,21 +45,25 @@ console.log(await recall('Is pumpkin a dog'));
 
 _tl;dr, the TensorFlow [Universal Sentence Encoder](https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder) encodes sentences to vectors using a pretrained model, and the [cosine of the angle between of two-vectors](https://en.wikipedia.org/wiki/Cosine_similarity) determines how similar two vectors are._
 
-LLMs often use vectors for encoding data (sometimes called _embedding_) like words or sentences because they allow for predictable, semantically-rich way of representing the relationships between data. This is what allows LLMs to be particularly good at natural language processing, for example.
+LLMs often use vectors for encoding things like words or sentences because they allow for a predictable, semantically-rich way of representing the relationships between data. This process of turning data to vectors is called _embedding_. This is what allows LLMs to be particularly good at natural language processing.
 
-From math class, we're used to vectors being 2D vectors or 3D vectors, representing something like motion in a space. There are other kinds of vectors too: `[7, 10, -2, 6, 5]` is a 5D vector, for example.
+From math and physics class, we're used to vectors being 2D vectors or 3D vectors, representing something like motion in a space. There are other kinds of vectors too: `[7, 10, -2, 6, 5]` is a 5D vector, for example. To store a sentence, we need to encode it to a 512-dimensional vector. (I bet you never have thought of something as 512D before but here we are...)
 
-When you tell Peanut to "store" a value, what you're really telling it is:
+When you tell this tiny vector database to "store" a value, what you're really telling it is:
 
 1. Take this sentence and encode it to a vector using _some algorithm_.
 2. Store the vector along with the sentence.
 
-When you tell Peanut to "recall" a value, what you're really asking it is:
+When you tell this tiny vector database to "recall" a value, what you're really asking it is:
 
 1. Take this query and encode it to a vector using _some algorithm_.
 2. Given all the stored vectors, which one is the most _similar_ to this one?
 3. Recall the sentence associated with the most similar vector.
 
-In this case, _some algorithm_ is the TensorFlow [Universal Sentence Encoder](https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder), which is a model that can transform sentences into vectors suitable for a broad range of natural language processing. **This is the main module driving Peanut.**
+In this case, _some algorithm_ is the TensorFlow [Universal Sentence Encoder](https://github.com/tensorflow/tfjs-models/tree/master/universal-sentence-encoder), which is a model that can transform sentences into vectors suitable for a broad range of natural language processing. **This is the main module driving this tiny vector database.**
 
-To find _similar_ vectors, we need to find the [cosine of the angle between of two-vectors](https://en.wikipedia.org/wiki/Cosine_similarity). **This is helpful because vectors that have a similar orientation encode similar sentences.** In this case, 1 represents a similar orientation, 0 represents orthagonal vectors (no similarity), and -1 represents that the orientation is in the opposite direction.
+To find _similar_ vectors, we need to find the [cosine of the angle between of two-vectors](https://en.wikipedia.org/wiki/Cosine_similarity). **This is helpful because vectors that have a similar orientation encode similar sentences.** That is:
+
+- The closer to 1 the cosine of the angle between the vectors is, the closer they are to "pointing" the same direction, and are therefore very similar.
+- The closer to -1 the cosine of the angle between the vectors is, the closer they are to "pointing" opposite directions, indicating polar opposites.
+- If the cosine between the vectors is close to 0, it means the vectors are orthagonal to each other, indicating no similarities.
